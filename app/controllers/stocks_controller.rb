@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
   def quote
-    render :text => YahooApi.quote(params[:symbol])
+    @symbol = params[:symbol]
+    @price = YahooApi.quote(@symbol)
   end
 end
