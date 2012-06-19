@@ -1,7 +1,5 @@
-function testing() {
-  alert("hi");
-}
-
-function loadApp() {
-  alert("hii");
-}
+Portfolio = Ember.Application.create({
+  ready: function() {
+           alert("What.");
+         }
+});
