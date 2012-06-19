@@ -1,0 +1,15 @@
+========== 2012-06-18 ==========
+
+Sample URL to get current price of VTI. (See http://www.gummy-stuff.org/Yahoo-data.htm )
+
+http://finance.yahoo.com/d/quotes.csv?s=VTI&f=l1
+
+========== 2012-06-12 ==========
+
+A Portfolio Tracker.
+
+Technologies: EmberJS, Bootstrap, Rails.
+
+Allow users to search financial assets (by company name, ticker symbol, etc.), and add them to their
+portfolio. Allow them to set the date they bought them at (and transaction cost, and auto-populate
+closing day price, but allow override). Take in to account dividends paid.
