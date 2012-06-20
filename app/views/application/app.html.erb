@@ -1,3 +1,9 @@
+<%= form_tag '#', :id => 'symbol_input_form' do %>
+  <%= label_tag "Symbol: " %>
+  <%= text_field_tag :symbol %>
+  <%= submit_tag "Add Stock" %>
+<% end %>
+
 <script type="text/x-handlebars">
   {{#collection contentBinding="Portfolio.quotesController" tagName="ul"}}
     {{content.symbol}} &mdash; {{content.price}}
