@@ -14,3 +14,14 @@
     </td>
   {{/collection}}
 </script>
+
+<script type="text/x-handlebars" data-template-name="outer_view">
+  Hello, {{firstName}} {{lastName}}
+  <p>
+    {{view Portfolio.InnerView}}
+  </p>
+</script>
+
+<script type="text/x-handlebars" data-template-name="inner_view">
+  I am inner. Color: {{color}}.
+</script>

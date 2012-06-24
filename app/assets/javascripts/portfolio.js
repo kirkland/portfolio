@@ -12,6 +12,9 @@ Portfolio = Ember.Application.create({
       return false;
     });
 
+    var outer = Portfolio.OuterView.create();
+    outer.append();
+
   }
 });
 
@@ -31,4 +34,18 @@ Portfolio.Quote = Ember.Object.extend({
 
 Portfolio.quotesController = Ember.ArrayController.create({
   content: []
+});
+
+
+
+Portfolio.OuterView = Ember.View.extend({
+  templateName: 'outer_view',
+  firstName: 'Ricardo',
+  lastName: 'Lebowki'
+});
+
+Portfolio.InnerView = Ember.View.extend({
+  templateName: 'inner_view',
+  color: 'red',
+  politics: 'royalist'
 });
