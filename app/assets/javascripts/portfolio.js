@@ -4,9 +4,13 @@ Portfolio = Ember.Application.create({
     var view = Ember.View.create({
       templateName: "quotes_table",
       addQuote: function() {
-                  var symbol = $("#quoteInput").val()
+                  var input = $("#quoteInput");
+
+                  var symbol = input.val()
 
                   Portfolio.quotesController.addQuote(symbol);
+
+                  input.val('');
 
                   return false;
                 }
