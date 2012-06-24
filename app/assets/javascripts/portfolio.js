@@ -51,9 +51,9 @@ Portfolio.quotesController = Ember.ArrayController.create({
   content: [],
 
   updateQuotes: function() {
-    for (var i = 0; i < this.content.length; i++) {
-      this.content[i].fetchPrice();
-    }
+    this.content.forEach(function(quote) {
+      quote.fetchPrice();
+    })
   }
 });
 
