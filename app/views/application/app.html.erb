@@ -5,14 +5,14 @@
 <% end %>
 
 <script type="text/x-handlebars">
-  {{#collection contentBinding="Portfolio.quotesController" tagName="table"}}
+  {{#each quote in Portfolio.quotesController.content}}
     <td>
-      {{content.symbol}}
+      {{quote.symbol}}
     </td>
     <td>
-      {{content.price}}
+      {{quote.price}}
     </td>
-  {{/collection}}
+  {{/each}}
 </script>
 
 <script type="text/x-handlebars" data-template-name="outer_view">
