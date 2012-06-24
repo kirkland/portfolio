@@ -15,6 +15,14 @@ Portfolio = Ember.Application.create({
     var outer = Portfolio.OuterView.create();
     outer.append();
 
+    var view = Ember.View.create({
+      templateName: 'this-view',
+      do_something: function() {
+        alert("nice");
+      }
+    });
+
+    view.append();
   }
 });
 
