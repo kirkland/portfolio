@@ -1,9 +1,3 @@
-<%= form_tag '#', :id => 'symbol_input_form' do %>
-  <%= label_tag "Symbol: " %>
-  <%= text_field_tag :symbol %>
-  <%= submit_tag "Add Stock" %>
-<% end %>
-
 <script type="text/x-handlebars" data-template-name="quotes_table">
   <form>
     {{view Ember.TextField id="quoteInput"}}
@@ -22,20 +16,4 @@
     </tr>
   {{/each}}
   </table>
-</script>
-
-<script type="text/x-handlebars" data-template-name="outer_view">
-  Hello, {{firstName}} {{lastName}}
-  <p>
-    {{view Portfolio.InnerView}}
-  </p>
-</script>
-
-<script type="text/x-handlebars" data-template-name="inner_view">
-  I am inner. Color: {{color}}.
-</script>
-
-<script type="text/x-handlebars" data-template-name="this-view">
-  Hello There !
-  <a href="#" {{action "do_something"}}>Click Me!</a>
 </script>

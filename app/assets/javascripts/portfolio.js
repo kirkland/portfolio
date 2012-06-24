@@ -1,44 +1,18 @@
 Portfolio = Ember.Application.create({
   ready: function() {
 
-    // Form to add a symbol to our portfolio.
-    $('#symbol_input_form').submit(function() {
-      var symbol = $('#symbol').val();
-
-      var newQuote = Portfolio.Quote.create();
-
-      newQuote.addObserver('symbol', function() {
-        newQuote.fetchPrice();
-      });
-
-      newQuote.set('symbol', symbol);
-
-      Portfolio.quotesController.addObject(newQuote);
-
-      return false;
-    });
-
     var view = Ember.View.create({
       templateName: "quotes_table",
       addQuote: function() {
                   var symbol = $("#quoteInput").val()
 
-                  var newQuote = Portfolio.Quote.create();
-
-                  newQuote.addObserver('symbol', function() {
-                    newQuote.fetchPrice();
-                  });
-
-                  newQuote.set('symbol', symbol);
-
-                  this.addObject(newQuote);
+                  Portfolio.quotesController.addQuote(symbol);
 
                   return false;
                 }
     });
 
     view.append();
-
 
   }
 });
@@ -56,27 +30,26 @@ Portfolio.Quote = Ember.Object.extend({
   }
 });
 
-// TODO: Observe changes in content, and fetch price for last added.
 Portfolio.quotesController = Ember.ArrayController.create({
   content: [],
 
+  // NOTE: Not used currently.
   updateQuotes: function() {
     this.content.forEach(function(quote) {
       quote.fetchPrice();
     })
   },
-});
 
+  addQuote: function(symbol) {
 
+              var newQuote = Portfolio.Quote.create();
 
-Portfolio.OuterView = Ember.View.extend({
-  templateName: 'outer_view',
-  firstName: 'Ricardo',
-  lastName: 'Lebowki'
-});
+              newQuote.addObserver('symbol', function() {
+                newQuote.fetchPrice();
+              });
 
-Portfolio.InnerView = Ember.View.extend({
-  templateName: 'inner_view',
-  color: 'red',
-  politics: 'royalist'
+              newQuote.set('symbol', symbol);
+
+              this.addObject(newQuote);
+            }
 });
