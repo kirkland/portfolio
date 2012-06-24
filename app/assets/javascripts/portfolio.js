@@ -12,6 +12,15 @@ Portfolio = Ember.Application.create({
       return false;
     });
 
+    var view = Ember.View.create({
+      tagName: 'table',
+      templateName: 'quote-row',
+      symbol: 'VTI',
+      price: 55.00
+    });
+
+    view.append();
+
   }
 });
 
