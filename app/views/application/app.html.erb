@@ -5,14 +5,18 @@
 <% end %>
 
 <script type="text/x-handlebars">
+  <table>
   {{#each quote in Portfolio.quotesController.content}}
-    <td>
-      {{quote.symbol}}
-    </td>
-    <td>
-      {{quote.price}}
-    </td>
+    <tr>
+      <td>
+        {{quote.symbol}}
+      </td>
+      <td>
+        {{quote.price}}
+      </td>
+    </tr>
   {{/each}}
+  </table>
 </script>
 
 <script type="text/x-handlebars" data-template-name="outer_view">
