@@ -14,6 +14,10 @@ Portfolio = Ember.Application.create({
 
     view.append();
 
+    view.didInsertElement = function() {
+      $("#quoteInput").focus();
+    }
+
   }
 });
 
