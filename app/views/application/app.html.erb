@@ -5,18 +5,12 @@
 <% end %>
 
 <script type="text/x-handlebars">
-  {{#collection contentBinding="Portfolio.quotesController" tagName="ul"}}
-    {{content.symbol}} &mdash; {{content.price}}
+  {{#collection contentBinding="Portfolio.quotesController" tagName="table"}}
+    <td>
+      {{content.symbol}}
+    </td>
+    <td>
+      {{content.price}}
+    </td>
   {{/collection}}
-</script>
-
-<script type="text/x-handlebars" data-template-name="quote-row">
-  <tr>
-    <td>
-      {{symbol}}
-    </td>
-    <td>
-      {{price}}
-    </td>
-  </tr>
 </script>

@@ -12,15 +12,6 @@ Portfolio = Ember.Application.create({
       return false;
     });
 
-    var view = Ember.View.create({
-      tagName: 'table',
-      templateName: 'quote-row',
-      symbol: 'VTI',
-      price: 55.00
-    });
-
-    view.append();
-
   }
 });
 
@@ -39,8 +30,5 @@ Portfolio.Quote = Ember.Object.extend({
 });
 
 Portfolio.quotesController = Ember.ArrayController.create({
-  content: [
-    Portfolio.Quote.create({ 'symbol': 'AAPL', 'price': 500.00}),
-    Portfolio.Quote.create({ 'symbol': 'VTI',  'price': 75.00})
-  ]
+  content: []
 });
