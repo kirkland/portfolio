@@ -18,17 +18,27 @@ Portfolio = Ember.Application.create({
       return false;
     });
 
-    var outer = Portfolio.OuterView.create();
-    outer.append();
-
     var view = Ember.View.create({
-      templateName: 'this-view',
-      do_something: function() {
-        alert("nice");
-      }
+      templateName: "quotes_table",
+      addQuote: function() {
+                  var symbol = $("#quoteInput").val()
+
+                  var newQuote = Portfolio.Quote.create();
+
+                  newQuote.addObserver('symbol', function() {
+                    newQuote.fetchPrice();
+                  });
+
+                  newQuote.set('symbol', symbol);
+
+                  this.addObject(newQuote);
+
+                  return false;
+                }
     });
 
     view.append();
+
 
   }
 });
@@ -54,7 +64,7 @@ Portfolio.quotesController = Ember.ArrayController.create({
     this.content.forEach(function(quote) {
       quote.fetchPrice();
     })
-  }
+  },
 });
 
 

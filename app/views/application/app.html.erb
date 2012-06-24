@@ -4,7 +4,12 @@
   <%= submit_tag "Add Stock" %>
 <% end %>
 
-<script type="text/x-handlebars">
+<script type="text/x-handlebars" data-template-name="quotes_table">
+  <form>
+    {{view Ember.TextField id="quoteInput"}}
+    <input type="submit" value="Add Stock" {{action "addQuote"}}>
+  </form>
+
   <table>
   {{#each quote in Portfolio.quotesController.content}}
     <tr>
