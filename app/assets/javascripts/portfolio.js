@@ -42,7 +42,13 @@ Portfolio.Quote = Ember.Object.extend({
 
 // TODO: Observe changes in content, and fetch price for last added.
 Portfolio.quotesController = Ember.ArrayController.create({
-  content: []
+  content: [],
+
+  updateQuotes: function() {
+    for (var i = 0; i < this.content.length; i++) {
+      this.content[i].fetchPrice();
+    }
+  }
 });
 
 
