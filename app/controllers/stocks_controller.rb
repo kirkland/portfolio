@@ -4,7 +4,7 @@ class StocksController < ApplicationController
     @price = YahooApi.quote(@symbol)
 
     if Rails.env.development?
-      @price = @price.to_f + rand(10).to_f
+      @price = @price.to_f + rand(5).to_f
     end
 
     render :layout => false

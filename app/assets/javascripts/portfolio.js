@@ -30,7 +30,7 @@ Portfolio = Ember.Application.create({
     var i = 0;
     var intervalId = window.setInterval(function() {
       Portfolio.quotesController.updateQuotes();
-    }, 5000);
+    }, 2000);
 
   }
 });
@@ -39,11 +39,31 @@ Portfolio.Quote = Ember.Object.extend({
   symbol: null,
   price: null,
 
+  row_class: function() {
+    return "symbol_" + this.get("symbol").toLowerCase();
+  }.property('price'),
+
   fetchPrice: function() {
     var self = this;
 
     $.get('/quote/' + self.symbol, function (data) {
-      self.set('price', data);
+      var newPrice = data;
+      var oldPrice = self.get('price')
+
+      self.set('price', newPrice);
+
+      if ( newPrice > oldPrice  ){
+
+        $("." + self.get('row_class')).effect("highlight", {color: "green"}, 1500);
+
+      } else if ( newPrice < oldPrice ) {
+
+        $("." + self.get('row_class')).effect("highlight", {color: "red"}, 1500);
+
+      }
+
+
+      // TODO: call this on change: $("#box").effect("highlight", {}, 1500);
     });
   }
 });
