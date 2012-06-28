@@ -22,6 +22,11 @@ Portfolio = Ember.Application.create({
       $("#quoteInput").focus();
     }
 
+    Portfolio.quotesController.addQuote('VTI');
+    Portfolio.quotesController.addQuote('BND');
+    Portfolio.quotesController.addQuote('AAPL');
+    Portfolio.quotesController.addQuote('Z');
+
   }
 });
 
