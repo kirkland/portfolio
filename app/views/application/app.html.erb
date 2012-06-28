@@ -1,10 +1,21 @@
 <script type="text/x-handlebars" data-template-name="quotes_table">
-  <form>
+  <form class="form-inline">
     {{view Ember.TextField id="quoteInput"}}
     <input type="submit" value="Add Stock" {{action "addQuote"}} class="btn btn-primary">
   </form>
 
-  <table class="table table-striped">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>
+          Symbol
+        </th>
+        <th>
+          Price
+        </th>
+      </tr>
+    </thead>
+
   {{#each quote in Portfolio.quotesController.content}}
     <tr>
       <td>
