@@ -3,6 +3,10 @@ class StocksController < ApplicationController
     @symbol = params[:symbol]
     @price = YahooApi.quote(@symbol)
 
+    if Rails.env.development?
+      @price = @price.to_f + rand(10).to_f
+    end
+
     render :layout => false
   end
 end

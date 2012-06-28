@@ -27,6 +27,11 @@ Portfolio = Ember.Application.create({
     Portfolio.quotesController.addQuote('AAPL');
     Portfolio.quotesController.addQuote('Z');
 
+    var i = 0;
+    var intervalId = window.setInterval(function() {
+      Portfolio.quotesController.updateQuotes();
+    }, 5000);
+
   }
 });
 
@@ -46,7 +51,6 @@ Portfolio.Quote = Ember.Object.extend({
 Portfolio.quotesController = Ember.ArrayController.create({
   content: [],
 
-  // NOTE: Not used currently.
   updateQuotes: function() {
     this.content.forEach(function(quote) {
       quote.fetchPrice();
