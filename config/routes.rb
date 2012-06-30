@@ -1,4 +1,4 @@
-Portfolio::Application.routes.draw do
+PortfolioApp::Application.routes.draw do
   match '/quote/:symbol' => 'stocks#quote'
 
   root :to => 'application#app'
