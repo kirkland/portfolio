@@ -13,6 +13,12 @@
         <th>
           Price
         </th>
+        <th>
+          Quantity
+        </th>
+        <th>
+          Total Value
+        </th>
       </tr>
     </thead>
 
@@ -24,7 +30,27 @@
       <td {{bindAttr class="quote.row_class"}}>
         {{quote.price}}
       </td>
+      <td>
+        {{view Ember.TextField valueBinding="quote.quantity"}}
+      </td>
+      <td>
+        {{quote.totalValue}}
+      </td>
     </tr>
   {{/each}}
+
+  <tfoot>
+    <tr>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+        {{Portfolio.quotesController.totalValue}}
+      </td>
+    </tr>
+  </tfoot>
   </table>
 </script>

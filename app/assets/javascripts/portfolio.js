@@ -37,7 +37,12 @@ Portfolio = Ember.Application.create({
 
 Portfolio.Quote = Ember.Object.extend({
   symbol: null,
-  price: null,
+  price: 0,
+  quantity: 1,
+
+  totalValue: function() {
+    return this.get('price') * this.get('quantity');
+  }.property('quantity', 'price'),
 
   row_class: function() {
     return "symbol_" + this.get("symbol").toLowerCase();
@@ -88,5 +93,11 @@ Portfolio.quotesController = Ember.ArrayController.create({
               newQuote.set('symbol', symbol);
 
               this.addObject(newQuote);
-            }
+            },
+
+  totalValue: function() {
+                return this.content.reduce(function(previousValue, item) {
+                  return previousValue + item.get('totalValue');
+                }, 0);
+              }.property("@each.totalValue")
 });
