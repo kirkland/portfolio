@@ -30,7 +30,7 @@ Portfolio = Ember.Application.create({
     var i = 0;
     var intervalId = window.setInterval(function() {
       Portfolio.quotesController.updateQuotes();
-    }, 2000);
+    }, 5000);
 
   }
 });
@@ -99,5 +99,9 @@ Portfolio.quotesController = Ember.ArrayController.create({
                 return this.content.reduce(function(previousValue, item) {
                   return previousValue + item.get('totalValue');
                 }, 0);
-              }.property("@each.totalValue")
+              }.property("@each.totalValue"),
+
+  persistToDatabase: function() {
+
+                     }
 });

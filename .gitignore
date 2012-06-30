@@ -1,6 +1,6 @@
 *.swp
 tmp/
 log/
-db/
+db/*.sqlite3
 *.swo
 *.~
