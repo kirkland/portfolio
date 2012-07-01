@@ -14,12 +14,14 @@
 ActiveRecord::Schema.define(:version => 20120630221611) do
 
   create_table "portfolios", :force => true do |t|
-    t.string   "user_id",        :null => false
+    t.string   "user_id"
+    t.string   "session_id"
     t.text     "portfolio_data"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "portfolios", ["session_id"], :name => "index_portfolios_on_session_id"
   add_index "portfolios", ["user_id"], :name => "index_portfolios_on_user_id"
 
 end
