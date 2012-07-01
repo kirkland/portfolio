@@ -60,5 +60,7 @@
 </p>
 
 <p>
-  Portfolio data: <%= @portfolio_data[:portfolio_data].inspect %>
+  <% if @portfolio_data.present? %>
+    Portfolio data: <%= @portfolio_data[:portfolio_data].inspect %>
+  <% end %>
 </p>
