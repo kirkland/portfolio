@@ -70,7 +70,13 @@ Portfolio.Quote = Ember.Object.extend({
 
       // TODO: call this on change: $("#box").effect("highlight", {}, 1500);
     });
-  }
+  },
+
+  toHash: function() {
+              return { symbol: this.get('symbol'),
+                       price: this.get('price'),
+                       quantity: this.get('quantity') }
+            }
 });
 
 Portfolio.quotesController = Ember.ArrayController.create({
@@ -102,6 +108,15 @@ Portfolio.quotesController = Ember.ArrayController.create({
               }.property("@each.totalValue"),
 
   persistToDatabase: function() {
+                       var content = this.get('content').map(function(item, index, enumerable) {
+                         return item.toHash();
+                       });
 
+                       var post_data = { version: 1,
+                                         portfolio_data: content };
+
+                       $.post('/update_portfolio', {data: JSON.stringify(post_data)}, function (data) {
+                         console.log("data: ", data);
+                       })
                      }
 });

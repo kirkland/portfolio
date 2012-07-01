@@ -1,4 +1,7 @@
 class StocksController < ApplicationController
+
+  before_filter :find_or_create_porfolio
+
   def quote
     @symbol = params[:symbol]
     @price = YahooApi.quote(@symbol)
@@ -8,5 +11,19 @@ class StocksController < ApplicationController
     end
 
     render :layout => false
+  end
+
+  def update_portfolio
+    portfolio_data = ActiveSupport::JSON.decode(params[:data])
+    @portfolio.portfolio_data = portfolio_data
+    @portfolio.save!
+    render :text => @portfolio.inspect and return
+  end
+
+  private
+
+  def find_or_create_porfolio
+    session_id = request.session_options[:id]
+    @portfolio = Portfolio.find_or_create_by_session_id(session_id)
   end
 end
