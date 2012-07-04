@@ -72,7 +72,6 @@ Portfolio.Quote = Ember.Object.extend({
 
   toHash: function() {
               return { symbol: this.get('symbol'),
-                       price: this.get('price'),
                        quantity: this.get('quantity') }
             }
 });
