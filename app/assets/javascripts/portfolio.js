@@ -90,7 +90,6 @@ Portfolio.quotesController = Ember.ArrayController.create({
 
               newQuote.addObserver('symbol', function() {
                 newQuote.fetchPrice();
-                self.persistToDatabase();
               });
 
               newQuote.addObserver('quantity', function() {
@@ -100,6 +99,7 @@ Portfolio.quotesController = Ember.ArrayController.create({
               newQuote.set('symbol', symbol);
 
               this.addObject(newQuote);
+              self.persistToDatabase();
             },
 
   totalValue: function() {
@@ -113,7 +113,6 @@ Portfolio.quotesController = Ember.ArrayController.create({
 
                        $.get('/portfolio', function (data) {
                          self.content.clear();
-                         console.log(data.portfolio_data);
                          data.portfolio_data.forEach(function(datum) {
                            var q = Portfolio.Quote.create({symbol: datum.symbol, quantity: datum.quantity});
                            self.addObject(q);
@@ -130,7 +129,6 @@ Portfolio.quotesController = Ember.ArrayController.create({
                                          portfolio_data: content };
 
                        $.post('/update_portfolio', {data: JSON.stringify(post_data)}, function (data) {
-                         console.log("data: ", data);
                        })
                      }
 });
