@@ -22,10 +22,7 @@ Portfolio = Ember.Application.create({
       $("#quoteInput").focus();
     }
 
-    Portfolio.quotesController.addQuote('VTI');
-    Portfolio.quotesController.addQuote('BND');
-    Portfolio.quotesController.addQuote('AAPL');
-    Portfolio.quotesController.addQuote('Z');
+    Portfolio.quotesController.fetchFromDatabase();
 
     var i = 0;
     var intervalId = window.setInterval(function() {
