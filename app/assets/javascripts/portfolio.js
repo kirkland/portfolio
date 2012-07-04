@@ -8,7 +8,7 @@ Portfolio = Ember.Application.create({
 
                   var symbol = input.val()
 
-                  Portfolio.quotesController.addQuote(symbol);
+                  Portfolio.quotesController.addQuote(Portfolio.Quote.create({symbol: symbol}));
 
                   input.val('');
 
@@ -82,22 +82,19 @@ Portfolio.quotesController = Ember.ArrayController.create({
     })
   },
 
-  addQuote: function(symbol) {
+  addQuote: function(newQuote) {
 
               var self = this;
 
-              var newQuote = Portfolio.Quote.create();
-
-              newQuote.addObserver('symbol', function() {
-                newQuote.fetchPrice();
-              });
+              if ( null === newQuote.quantity ) {
+                newQuote.set('quantity', 1);
+              }
 
               newQuote.addObserver('quantity', function() {
                 self.persistToDatabase();
               });
 
-              newQuote.set('symbol', symbol);
-
+              newQuote.fetchPrice();
               this.addObject(newQuote);
               self.persistToDatabase();
             },
@@ -116,7 +113,7 @@ Portfolio.quotesController = Ember.ArrayController.create({
                          console.log(data.portfolio_data);
                          data.portfolio_data.forEach(function(datum) {
                            var q = Portfolio.Quote.create({symbol: datum.symbol, quantity: datum.quantity});
-                           self.addObject(q);
+                           self.addQuote(q);
                          });
                        })
                      },
