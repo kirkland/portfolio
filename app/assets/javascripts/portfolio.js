@@ -67,8 +67,6 @@ Portfolio.Quote = Ember.Object.extend({
 
       }
 
-
-      // TODO: call this on change: $("#box").effect("highlight", {}, 1500);
     });
   },
 
