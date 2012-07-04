@@ -99,6 +99,12 @@ Portfolio.quotesController = Ember.ArrayController.create({
               self.persistToDatabase();
             },
 
+  removeQuote: function(event) {
+                 var quote = event.context;
+                 this.content.removeObject(quote);
+                 this.persistToDatabase();
+               },
+
   totalValue: function() {
                 return this.content.reduce(function(previousValue, item) {
                   return previousValue + item.get('totalValue');

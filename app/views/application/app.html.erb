@@ -32,6 +32,7 @@
       </td>
       <td>
         {{view Ember.TextField valueBinding="quote.quantity"}}
+        <a {{action "removeQuote" target="Portfolio.quotesController" context="quote"}}>Remove</a>
       </td>
       <td>
         {{quote.totalValue}}
