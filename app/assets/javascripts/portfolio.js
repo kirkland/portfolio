@@ -111,6 +111,19 @@ Portfolio.quotesController = Ember.ArrayController.create({
                 }, 0);
               }.property("@each.totalValue"),
 
+  fetchFromDatabase: function() {
+                       var self = this;
+
+                       $.get('/portfolio', function (data) {
+                         self.content.clear();
+                         console.log(data.portfolio_data);
+                         data.portfolio_data.forEach(function(datum) {
+                           var q = Portfolio.Quote.create({symbol: datum.symbol, quantity: datum.quantity});
+                           self.addObject(q);
+                         });
+                       })
+                     },
+
   persistToDatabase: function() {
                        var content = this.get('content').map(function(item, index, enumerable) {
                          return item.toHash();

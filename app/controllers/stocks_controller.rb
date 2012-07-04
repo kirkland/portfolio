@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
 
-  before_filter :find_or_create_porfolio
+  before_filter :find_or_create_porfolio, :only => [:update_portfolio, :portfolio]
 
   def quote
     @symbol = params[:symbol]
@@ -18,6 +18,10 @@ class StocksController < ApplicationController
     @portfolio.portfolio_data = portfolio_data
     @portfolio.save!
     render :text => @portfolio.inspect and return
+  end
+
+  def portfolio
+    render :json => @portfolio.portfolio_data
   end
 
   private
