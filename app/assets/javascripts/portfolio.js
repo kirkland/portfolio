@@ -87,10 +87,17 @@ Portfolio.quotesController = Ember.ArrayController.create({
 
   addQuote: function(symbol) {
 
+              var self = this;
+
               var newQuote = Portfolio.Quote.create();
 
               newQuote.addObserver('symbol', function() {
                 newQuote.fetchPrice();
+                self.persistToDatabase();
+              });
+
+              newQuote.addObserver('quantity', function() {
+                self.persistToDatabase();
               });
 
               newQuote.set('symbol', symbol);
