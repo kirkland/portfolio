@@ -20,11 +20,13 @@ Portfolio = Ember.Application.create({
 
     view.didInsertElement = function() {
       $("#quoteInput").focus();
+      $("#stocks_table thead tr").sortable();
     }
 
     Portfolio.quotesController.fetchFromDatabase();
 
     var i = 0;
+
     var intervalId = window.setInterval(function() {
       Portfolio.quotesController.updateQuotes();
     }, 5000);
