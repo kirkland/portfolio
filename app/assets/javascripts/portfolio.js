@@ -125,6 +125,8 @@ Portfolio.quotesController = Ember.ArrayController.create({
                    })
 
                    this.set("columns", columns);
+
+                   this.persistToDatabase();
                  },
 
   fetchFromDatabase: function() {
@@ -146,7 +148,8 @@ Portfolio.quotesController = Ember.ArrayController.create({
                        });
 
                        var post_data = { version: 1,
-                                         portfolio_data: content };
+                                         portfolio_data: content,
+                                         columns: this.get("columns").toArray() };
 
                        $.post('/update_portfolio', {data: JSON.stringify(post_data)}, function (data) {
                          console.log("data: ", data);
