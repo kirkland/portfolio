@@ -20,11 +20,14 @@ Portfolio = Ember.Application.create({
 
     view.didInsertElement = function() {
       $("#quoteInput").focus();
+
       $("#stocks_table").dragtable({
         persistState: function() {
                         Portfolio.quotesController.updateColumns();
                       }
       });
+
+      Portfolio.quotesController.updateColumns();
     }
 
     Portfolio.quotesController.fetchFromDatabase();
