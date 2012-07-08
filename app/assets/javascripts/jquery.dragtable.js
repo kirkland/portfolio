@@ -72,7 +72,8 @@
       beforeStart:$.noop,
       beforeMoving:$.noop,
       beforeReorganize:$.noop,
-      beforeStop:$.noop
+      beforeStop:$.noop,
+      afterStop:$.noop
     };
     var opts = $.extend(defaults, options);
 
@@ -151,6 +152,7 @@
           _D.bubbleCols();
           opts.beforeStop(_D.originalTable);
           _D.sortableTable.el.remove();
+          opts.afterStop(_D.originalTable);
           // persist state if necessary
           if(opts.persistState !== null) { 
             $.isFunction(opts.persistState) ? opts.persistState(_D.originalTable) : _D.persistState();

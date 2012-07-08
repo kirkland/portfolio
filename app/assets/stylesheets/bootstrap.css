@@ -1621,6 +1621,11 @@ table {
   background-color: #f0f0f0;
 }
 
+.table-striped-even tbody tr:nth-child(even) td,
+.table-striped-even tbody tr:nth-child(even) th {
+  background-color: #f0f0f0;
+}
+
 .table tbody tr:hover td,
 .table tbody tr:hover th {
   background-color: #f5f5f5;
