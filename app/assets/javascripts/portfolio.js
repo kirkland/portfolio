@@ -20,7 +20,11 @@ Portfolio = Ember.Application.create({
 
     view.didInsertElement = function() {
       $("#quoteInput").focus();
-      $("#stocks_table").dragtable();
+      $("#stocks_table").dragtable({
+        persistState: function() {
+                        Portfolio.quotesController.updateColumns();
+                      }
+      });
     }
 
     Portfolio.quotesController.fetchFromDatabase();
@@ -78,6 +82,8 @@ Portfolio.Quote = Ember.Object.extend({
 Portfolio.quotesController = Ember.ArrayController.create({
   content: [],
 
+  columns: [],
+
   updateQuotes: function() {
     this.content.forEach(function(quote) {
       quote.fetchPrice();
@@ -112,6 +118,14 @@ Portfolio.quotesController = Ember.ArrayController.create({
                   return previousValue + item.get('totalValue');
                 }, 0);
               }.property("@each.totalValue"),
+
+  updateColumns: function() {
+                   var columns = $("#stocks_table tr th").map(function(idx, elt) {
+                     return $(elt).attr("data-keyname");
+                   })
+
+                   this.set("columns", columns);
+                 },
 
   fetchFromDatabase: function() {
                        var self = this;
