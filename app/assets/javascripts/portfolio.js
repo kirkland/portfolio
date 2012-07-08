@@ -134,7 +134,7 @@ Portfolio.quotesController = Ember.ArrayController.create({
 
                        $.get('/portfolio', function (data) {
                          self.content.clear();
-                         console.log(data.portfolio_data);
+                         //console.log(data.portfolio_data);
                          data.portfolio_data.forEach(function(datum) {
                            var q = Portfolio.Quote.create({symbol: datum.symbol, quantity: datum.quantity});
                            self.addQuote(q);
@@ -152,7 +152,7 @@ Portfolio.quotesController = Ember.ArrayController.create({
                                          columns: this.get("columns").toArray() };
 
                        $.post('/update_portfolio', {data: JSON.stringify(post_data)}, function (data) {
-                         console.log("data: ", data);
+                         //console.log("data: ", data);
                        })
                      }
 });
