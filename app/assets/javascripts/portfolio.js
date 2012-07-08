@@ -20,7 +20,7 @@ Portfolio = Ember.Application.create({
 
     view.didInsertElement = function() {
       $("#quoteInput").focus();
-      $("#stocks_table thead tr").sortable();
+      $("#stocks_table").dragtable();
     }
 
     Portfolio.quotesController.fetchFromDatabase();
