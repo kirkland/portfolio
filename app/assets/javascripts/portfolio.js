@@ -70,7 +70,7 @@ Portfolio.Quote = Ember.Object.extend({
   fetchPrice: function() {
     var self = this;
 
-    $.get(APP_BASE + '/quote/' + self.symbol, function (data) {
+    $.get(BASE_URL + '/quote/' + self.symbol, function (data) {
       var newPrice = data;
       var oldPrice = self.get('price')
 
@@ -148,7 +148,7 @@ Portfolio.quotesController = Ember.ArrayController.create({
   fetchFromDatabase: function() {
                        var self = this;
 
-                       $.get('/portfolio', function (data) {
+                       $.get(BASE_URL + '/portfolio', function (data) {
                          self.content.clear();
                          //console.log(data.portfolio_data);
                          data.portfolio_data.forEach(function(datum) {
@@ -167,7 +167,7 @@ Portfolio.quotesController = Ember.ArrayController.create({
                                          portfolio_data: content,
                                          columns: this.get("columns").toArray() };
 
-                       $.post('/update_portfolio', {data: JSON.stringify(post_data)}, function (data) {
+                       $.post(BASE_URL + '/update_portfolio', {data: JSON.stringify(post_data)}, function (data) {
                          //console.log("data: ", data);
                        })
                      }
