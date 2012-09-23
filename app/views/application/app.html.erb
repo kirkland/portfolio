@@ -56,12 +56,14 @@
   </table>
 </script>
 
-<p>
-  Session: <%= @session_id %>
-</p>
+<% if Rails.env.development? %>
+  <p>
+    Session: <%= @session_id %>
+  </p>
 
-<p>
-  <% if @portfolio_data.present? %>
-    Portfolio data: <%= @portfolio_data[:portfolio_data].inspect %>
-  <% end %>
-</p>
+  <p>
+    <% if @portfolio_data.present? %>
+      Portfolio data: <%= @portfolio_data[:portfolio_data].inspect %>
+    <% end %>
+  </p>
+<% end %>
