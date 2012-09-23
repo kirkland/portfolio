@@ -25,6 +25,6 @@ production:
   reconnect: true
   pool: 5
   host: localhost
-  username: franklin
-  password: secret
+  username: postgres
+  password: postgres
   database: portfolio_production
