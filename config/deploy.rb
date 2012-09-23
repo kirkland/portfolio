@@ -1,3 +1,7 @@
+require "bundler/capistrano"
+
+default_environment['PATH'] = "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+
 set :application, "portfolio"
 set :repository,  "git@github.com:kirkland/portfolio.git"
 
@@ -23,3 +27,7 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
+
+before "deploy:assets:precompile", "bundle:install"
+
+set :normalize_asset_timestamps, false
