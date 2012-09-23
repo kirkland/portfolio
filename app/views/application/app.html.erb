@@ -1,5 +1,9 @@
 <h1>Stock Portfolio</h1>
 
+<script type="text/javascript">
+  APP_BASE="<%= Rails.env.production? ? "/portfolio" : "" %>";
+</script>
+
 <script type="text/x-handlebars" data-template-name="quotes_table">
   <form class="form-inline">
     {{view Ember.TextField id="quoteInput"}}

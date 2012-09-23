@@ -70,7 +70,7 @@ Portfolio.Quote = Ember.Object.extend({
   fetchPrice: function() {
     var self = this;
 
-    $.get('/quote/' + self.symbol, function (data) {
+    $.get(APP_BASE + '/quote/' + self.symbol, function (data) {
       var newPrice = data;
       var oldPrice = self.get('price')
 
