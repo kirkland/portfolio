@@ -21,23 +21,24 @@ Portfolio = Ember.Application.create({
     view.didInsertElement = function() {
       $("#quoteInput").focus();
 
-      $("#stocks_table").dragtable({
-        persistState: function() {
-                        Portfolio.quotesController.updateColumns();
-                      },
-
-        // When the dragtable plugin is in action, it appears to make a copy of the table, where the
-        // header row becomes a regular row, which is messing up our stripes. Need to switch the classes
-        // while we're dragging.
-        beforeStart: function() {
-                        $("#stocks_table").removeClass("table-striped").addClass("table-striped-even");
-                      },
-        afterStop: function() {
-                            console.log($("#stocks_table"));
-                            $("#stocks_table").addClass("table-striped").removeClass("table-striped-even");
-                            console.log($("#stocks_table"));
-                      }
-      });
+// Disabled until I can get this working smoothly.
+//      $("#stocks_table").dragtable({
+//        persistState: function() {
+//                        Portfolio.quotesController.updateColumns();
+//                      },
+//
+//        // When the dragtable plugin is in action, it appears to make a copy of the table, where the
+//        // header row becomes a regular row, which is messing up our stripes. Need to switch the classes
+//        // while we're dragging.
+//        beforeStart: function() {
+//                        $("#stocks_table").removeClass("table-striped").addClass("table-striped-even");
+//                      },
+//        afterStop: function() {
+//                            console.log($("#stocks_table"));
+//                            $("#stocks_table").addClass("table-striped").removeClass("table-striped-even");
+//                            console.log($("#stocks_table"));
+//                      }
+//      });
 
       Portfolio.quotesController.updateColumns();
     }
